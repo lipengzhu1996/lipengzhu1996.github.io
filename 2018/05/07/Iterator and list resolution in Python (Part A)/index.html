@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Iterator and list resolution in Python (Part A)Introduction to IteratorTo understand how iterator works in Python, let us take some for loop for example: ` bash    for x in [1,2,3,4]: print(x, end = ‘">
+    <meta name="description" content="Introduction to IteratorTo understand how iterator works in Python, let us take some for loop for example: 123456789&amp;gt;&amp;gt;&amp;gt; for x in [1,2,3,4]: print(x, end = &apos; &apos;)1 2 3 4 &amp;gt;&amp;gt;&amp;gt; for x in (1">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Iterator and list resolution in Python (Part A)">
 <meta property="og:url" content="http://yoursite.com/2018/05/07/Iterator and list resolution in Python (Part A)/index.html">
 <meta property="og:site_name" content="The Street Where Wind Settles">
-<meta property="og:description" content="Iterator and list resolution in Python (Part A)Introduction to IteratorTo understand how iterator works in Python, let us take some for loop for example: ` bash    for x in [1,2,3,4]: print(x, end = ‘">
+<meta property="og:description" content="Introduction to IteratorTo understand how iterator works in Python, let us take some for loop for example: 123456789&amp;gt;&amp;gt;&amp;gt; for x in [1,2,3,4]: print(x, end = &apos; &apos;)1 2 3 4 &amp;gt;&amp;gt;&amp;gt; for x in (1">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-05-10T07:26:01.119Z">
+<meta property="og:updated_time" content="2018-05-10T07:31:44.951Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Iterator and list resolution in Python (Part A)">
-<meta name="twitter:description" content="Iterator and list resolution in Python (Part A)Introduction to IteratorTo understand how iterator works in Python, let us take some for loop for example: ` bash    for x in [1,2,3,4]: print(x, end = ‘">
+<meta name="twitter:description" content="Introduction to IteratorTo understand how iterator works in Python, let us take some for loop for example: 123456789&amp;gt;&amp;gt;&amp;gt; for x in [1,2,3,4]: print(x, end = &apos; &apos;)1 2 3 4 &amp;gt;&amp;gt;&amp;gt; for x in (1">
     
     
         
@@ -101,7 +101,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Iterator-and-list-resolution-in-Python-Part-A"><span class="toc-number">1.</span> <span class="toc-text">Iterator and list resolution in Python (Part A)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction-to-Iterator"><span class="toc-number">1.1.</span> <span class="toc-text">Introduction to Iterator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction-to-list-resolution"><span class="toc-number">1.2.</span> <span class="toc-text">Introduction to list resolution</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction-to-Iterator"><span class="toc-number">1.</span> <span class="toc-text">Introduction to Iterator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction-to-list-resolution"><span class="toc-number">2.</span> <span class="toc-text">Introduction to list resolution</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -140,190 +140,45 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="Iterator-and-list-resolution-in-Python-Part-A"><a href="#Iterator-and-list-resolution-in-Python-Part-A" class="headerlink" title="Iterator and list resolution in Python (Part A)"></a>Iterator and list resolution in Python (Part A)</h1><h2 id="Introduction-to-Iterator"><a href="#Introduction-to-Iterator" class="headerlink" title="Introduction to Iterator"></a>Introduction to Iterator</h2><p>To understand how iterator works in Python, let us take some for loop for example:</p>
-<p><code>`</code> bash</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>for x in [1,2,3,4]: print(x, end = ‘ ‘)</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>1 2 3 4 </p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>for x in (1,2,3,4): print(x, end = ‘ ‘)</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>1 2 3 4 </p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>for x in ‘spam’: print(x, end = ‘ ‘)</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>s p a m<br><code>`</code> bash</p>
+    <h2 id="Introduction-to-Iterator"><a href="#Introduction-to-Iterator" class="headerlink" title="Introduction to Iterator"></a>Introduction to Iterator</h2><p>To understand how iterator works in Python, let us take some for loop for example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; <span class="keyword">for</span> x <span class="keyword">in</span> [1,2,3,4]: <span class="built_in">print</span>(x, end = <span class="string">' '</span>)</span><br><span class="line"></span><br><span class="line">1 2 3 4 </span><br><span class="line">&gt;&gt;&gt; <span class="keyword">for</span> x <span class="keyword">in</span> (1,2,3,4): <span class="built_in">print</span>(x, end = <span class="string">' '</span>)</span><br><span class="line"></span><br><span class="line">1 2 3 4 </span><br><span class="line">&gt;&gt;&gt; <span class="keyword">for</span> x <span class="keyword">in</span> <span class="string">'spam'</span>: <span class="built_in">print</span>(x, end = <span class="string">' '</span>)</span><br><span class="line"></span><br><span class="line">s p a m</span><br></pre></td></tr></table></figure>
 <p>In fact, the source ([1,2,3,4], (1,2,3,4) and ‘spam’ there) of the loop variable(x) in for loop can be more general than these three types, it can be any Iterable objects. The concept of “Iterable objects” is kind of novel in Python but very common in programming. </p>
 <p>There is a generalized definition: Any object that is actually saved as a list or that can produce one result at a time in an iterative tool environment is an iterable object. In the example above three sources are all iterable objects because they can provide a result in every loop.</p>
 <p>The iterative tools we mentioned in the definition is corresponsive to iterable objects which scan objects from left to right. These iterative tools include for loops, list comprehensions, in membership tests, and map built-in functions</p>
 <p>One famous application of iterable object is file operation. We know that there is a method named readline() for file object which will return one line of text in the file opened once called:</p>
-<p><code>`</code> bash</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>f = open(‘helloworld.py’)<br>f.readline()<br>‘import sys\n’<br>f.readline()<br>“print(‘hello world!’)”<br>f.readline()<br>‘’<br><code>`</code> bash</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = open(<span class="string">'helloworld.py'</span>)</span><br><span class="line">&gt;&gt;&gt; f.readline()</span><br><span class="line"><span class="string">'import sys\n'</span></span><br><span class="line">&gt;&gt;&gt; f.readline()</span><br><span class="line"><span class="string">"print('hello world!')"</span></span><br><span class="line">&gt;&gt;&gt; f.readline()</span><br><span class="line"><span class="string">''</span></span><br></pre></td></tr></table></figure>
 <p>Now we can use another method of file object named <strong>next</strong> which can achieve the same result: it will return next line of text once called.</p>
-<p><code>`</code> bash</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>f = open(‘helloworld.py’)<br>f.<strong>next</strong>()<br>‘import sys\n’<br>f.<strong>next</strong>()<br>“print(‘hello world!’)”<br>f.<strong>next</strong>()<br>Traceback (most recent call last):<br>  File “&lt;pyshell#32&gt;”, line 1, in <module><br>    f.<strong>next</strong>()<br>StopIteration<br><code>`</code> bash</module></p>
-</blockquote>
-</blockquote>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = open(<span class="string">'helloworld.py'</span>)</span><br><span class="line">&gt;&gt;&gt; f.__next__()</span><br><span class="line"><span class="string">'import sys\n'</span></span><br><span class="line">&gt;&gt;&gt; f.__next__()</span><br><span class="line"><span class="string">"print('hello world!')"</span></span><br><span class="line">&gt;&gt;&gt; f.__next__()</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;pyshell#32&gt;"</span>, line 1, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    f.__next__()</span><br><span class="line">StopIteration</span><br></pre></td></tr></table></figure>
 <p>There are two features worth attention. First is that every time <strong>next</strong>() method called, the next result of the object will be returned, so we can judge whether an object is an iterator by checking it. Second is a difference between file.<strong>next</strong>() and file.readline() that when it reaches the end of a series of results, it will trigger an exception named StopIteration. We can catch this exception to determine when to leave when using iterative tools we mentioned above.</p>
 <p>When we know that there is a method named <strong>next</strong>() in file object, we can make sure that file object is a iterable object so we can use iterative tools to simplify our codes:</p>
-<p><code>`</code> bash</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>for line in open(‘helloworld.py’): print(line, end=’’)<br><code>`</code> bash</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; <span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">'helloworld.py'</span>): <span class="built_in">print</span>(line, end=<span class="string">''</span>)</span><br></pre></td></tr></table></figure>
 <p>import sys<br>print(‘hello world!’)</p>
 <p>In fact, all iterative tools will call the <strong>next</strong>()method of the iterable objects every loop to get the next result in the object. At this point we may have the following questions: The list is the first iterable object we know and be most familiar with, what happens when we try to call list.<strong>next</strong>()?</p>
-<p><code>`</code> bash</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>a=[1,2,3,4]<br>a.<strong>next</strong>()<br>Traceback (most recent call last):<br>  File “&lt;pyshell#47&gt;”, line 1, in <module><br>    a.<strong>next</strong>()<br>AttributeError: ‘list’ object has no attribute ‘<strong>next</strong>‘<br><code>`</code> bash</module></p>
-</blockquote>
-</blockquote>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a=[1,2,3,4]</span><br><span class="line">&gt;&gt;&gt; a.__next__()</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;pyshell#47&gt;"</span>, line 1, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    a.__next__()</span><br><span class="line">AttributeError: <span class="string">'list'</span> object has no attribute <span class="string">'__next__'</span></span><br></pre></td></tr></table></figure>
 <p>Oops! What’s wrong with list? To understand this error, we need to be clear about two terms: iterable object and iterator. The biggest difference between them is that iterator has <strong>next</strong>() method but an iterable object does not. To make it direct, a list is an iterable object but not an iterator so it does not have a <strong>next</strong>() method, while a file is both an iterable object and an iterator. In fact, we can use a built-in function called iter() to change an iterable object into a iterator. We can use this example to show the difference between list and file:</p>
-<p><code>`</code> bash</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>a=[1,2,3,4]<br>b=iter(a)<br>b.<strong>next</strong>()<br>1<br>b.<strong>next</strong>()<br>2<br>b.<strong>next</strong>()<br>3<br>b.<strong>next</strong>()<br>4<br>b.<strong>next</strong>()<br>Traceback (most recent call last):<br>  File “&lt;pyshell#55&gt;”, line 1, in <module><br>    b.<strong>next</strong>()<br>StopIteration<br><code>`</code> bash</module></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><code>`</code> bash</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>f=open(‘helloworld.py’)<br>c=iter(f)<br>c.<strong>next</strong>()<br>‘import sys\n’<br>c.<strong>next</strong>()<br>“print(‘hello world!’)”<br>c.<strong>next</strong>()<br>Traceback (most recent call last):<br>  File “&lt;pyshell#60&gt;”, line 1, in <module><br>    c.<strong>next</strong>()<br>StopIteration<br><code>`</code> bash</module></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><code>`</code> bash</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>f=open(‘helloworld.py’)<br>f.<strong>next</strong>()<br>‘import sys\n’<br>f.<strong>next</strong>()<br>“print(‘hello world!’)”<br>c=iter(f)<br>c.<strong>next</strong>()        #Attention here! next(c) returns the same result of next(f)<br>Traceback (most recent call last):<br>  File “&lt;pyshell#65&gt;”, line 1, in <module><br>    c.<strong>next</strong>()<br>StopIteration<br><code>`</code> bash</module></p>
-</blockquote>
-</blockquote>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a=[1,2,3,4]</span><br><span class="line">&gt;&gt;&gt; b=iter(a)</span><br><span class="line">&gt;&gt;&gt; b.__next__()</span><br><span class="line">1</span><br><span class="line">&gt;&gt;&gt; b.__next__()</span><br><span class="line">2</span><br><span class="line">&gt;&gt;&gt; b.__next__()</span><br><span class="line">3</span><br><span class="line">&gt;&gt;&gt; b.__next__()</span><br><span class="line">4</span><br><span class="line">&gt;&gt;&gt; b.__next__()</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;pyshell#55&gt;"</span>, line 1, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    b.__next__()</span><br><span class="line">StopIteration</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f=open(<span class="string">'helloworld.py'</span>)</span><br><span class="line">&gt;&gt;&gt; c=iter(f)</span><br><span class="line">&gt;&gt;&gt; c.__next__()</span><br><span class="line"><span class="string">'import sys\n'</span></span><br><span class="line">&gt;&gt;&gt; c.__next__()</span><br><span class="line"><span class="string">"print('hello world!')"</span></span><br><span class="line">&gt;&gt;&gt; c.__next__()</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;pyshell#60&gt;"</span>, line 1, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    c.__next__()</span><br><span class="line">StopIteration</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f=open(<span class="string">'helloworld.py'</span>)</span><br><span class="line">&gt;&gt;&gt; f.__next__()</span><br><span class="line"><span class="string">'import sys\n'</span></span><br><span class="line">&gt;&gt;&gt; f.__next__()</span><br><span class="line"><span class="string">"print('hello world!')"</span></span><br><span class="line">&gt;&gt;&gt; c=iter(f)</span><br><span class="line">&gt;&gt;&gt; c.__next__()<span class="comment">#Attention here! next(c) returns the same result of next(f) </span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;pyshell#65&gt;"</span>, line 1, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    c.__next__()</span><br><span class="line">StopIteration</span><br></pre></td></tr></table></figure>
 <p>By now, we have a preliminary understanding of iterators. It is a good tool in programming if applied properly. In most common cases, we can use iterator together with for loop to take place of while loop to run faster. Because iterators run in Python at the speed of C language, while the while loop runs python bytecode through the python virtual machine. At any time, it should be faster if we replace the python code with the C code.</p>
 <p>There are two often used iterable object: dictionary and range()</p>
-<p><code>`</code> bash</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>Dict = {‘a’:1,’b’:2,’c’:3}<br>for i in Dict: print(i, Dict[i])</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>a 1<br>b 2<br>c 3</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>for i in range(2):print(i)</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>0<br>1<br><code>`</code> bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; Dict = &#123;<span class="string">'a'</span>:1,<span class="string">'b'</span>:2,<span class="string">'c'</span>:3&#125;</span><br><span class="line">&gt;&gt;&gt; <span class="keyword">for</span> i <span class="keyword">in</span> Dict: <span class="built_in">print</span>(i, Dict[i])</span><br><span class="line"></span><br><span class="line">a 1</span><br><span class="line">b 2</span><br><span class="line">c 3</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; <span class="keyword">for</span> i <span class="keyword">in</span> range(2):<span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">0</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
 <p>Attention that we need to wrap an iterable object into a list call to see all the values at once</p>
-<p><code>`</code> bash</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>range(2)<br>range(0, 2)<br>list(range(2))<br>[0, 1]<br><code>`</code> bash</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; range(2)</span><br><span class="line">range(0, 2)</span><br><span class="line">&gt;&gt;&gt; list(range(2))</span><br><span class="line">[0, 1]</span><br></pre></td></tr></table></figure>
 <h2 id="Introduction-to-list-resolution"><a href="#Introduction-to-list-resolution" class="headerlink" title="Introduction to list resolution"></a>Introduction to list resolution</h2><p>List resolution derives from the concept of collections. It is a way to create a new list by running an expression on each item in the sequence, one at a time, from left to right. List resolutions are composed of square brackets (reminding us the fact that we are creating a list) and operational expressions and loop structures that use the same variable name. Let’s look at an example:</p>
-<p><code>`</code> bash</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>L = [1,2,3,4]<br>L1 = [x+10 for x in L]<br>L1<br>[11, 12, 13, 14]<br><code>`</code> bash</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; L = [1,2,3,4]</span><br><span class="line">&gt;&gt;&gt; L1 = [x+10 <span class="keyword">for</span> x <span class="keyword">in</span> L]</span><br><span class="line">&gt;&gt;&gt; L1</span><br><span class="line">[11, 12, 13, 14]</span><br></pre></td></tr></table></figure>
 <p>In this example, the operational expression(x+10) and loop structure(for x in L) use the same variable(x). During execution, the python interpreter internally performs a list traversal, assigns each x in order to an element and collects the results of running the left expression for each element. The list of results we get is a list containing a new list of x+10 for each x from L.</p>
 <p>When we use list resolution together with iterators, it greatly simplifies our code. At any time we want to perform same operations on each element in a sequence, we can consider the usage of list resolution:</p>
-<p><code>`</code> bash</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>lines = [line.rstrip() for line in open(‘helloworld.py’)]<br>lines<br>[‘import sys’, “print(‘hello world!’)”]<br><code>`</code> bash</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; lines = [line.rstrip() <span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">'helloworld.py'</span>)]</span><br><span class="line">&gt;&gt;&gt; lines</span><br><span class="line">[<span class="string">'import sys'</span>, <span class="string">"print('hello world!')"</span>]</span><br></pre></td></tr></table></figure>
 <p>If we want to skip some element in a consequence, we can use an if judgement to filter the list resolution:</p>
-<p><code>`</code> bash</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>[x for x in range(5) if x%2 ==0]<br>[0, 2, 4]<br><code>`</code> bash</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; [x <span class="keyword">for</span> x <span class="keyword">in</span> range(5) <span class="keyword">if</span> x%2 ==0]</span><br><span class="line">[0, 2, 4]</span><br></pre></td></tr></table></figure>
 <p>When the for expression in resolution is nested, it equals to nested for loop when run:</p>
-<p><code>`</code> bash</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>[x + y for x in [0,1,2] for y in [10,20,30]]<br>[10, 20, 30, 11, 21, 31, 12, 22, 32]<br><code>`</code> bash</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; [x + y <span class="keyword">for</span> x <span class="keyword">in</span> [0,1,2] <span class="keyword">for</span> y <span class="keyword">in</span> [10,20,30]]</span><br><span class="line">[10, 20, 30, 11, 21, 31, 12, 22, 32]</span><br></pre></td></tr></table></figure>
 <p>Equals to: (Pay attention to the outer loop variable(x) and inner loop variable(y))</p>
-<p><code>`</code> bash</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>res = []<br>for x in [0,1,2]:<br>        for y in [10,20,30]:<br>            res.append(x+y)<br>res<br>[10, 20, 30, 11, 21, 31, 12, 22, 32]<br><code>`</code> bash</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; res = []</span><br><span class="line">&gt;&gt;&gt; <span class="keyword">for</span> x <span class="keyword">in</span> [0,1,2]:</span><br><span class="line">		<span class="keyword">for</span> y <span class="keyword">in</span> [10,20,30]:</span><br><span class="line">			res.append(x+y)</span><br><span class="line">&gt;&gt;&gt; res</span><br><span class="line">[10, 20, 30, 11, 21, 31, 12, 22, 32]</span><br></pre></td></tr></table></figure>
 <p>A typical usage is given below:</p>
-<p><code>`</code> bash</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>[(x,y) for x in range(5) if x%2==0 for y in range(5) if y%2 ==1]<br>[(0, 1), (0, 3), (2, 1), (2, 3), (4, 1), (4, 3)]<br><code>`</code> bash</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; [(x,y) <span class="keyword">for</span> x <span class="keyword">in</span> range(5) <span class="keyword">if</span> x%2==0 <span class="keyword">for</span> y <span class="keyword">in</span> range(5) <span class="keyword">if</span> y%2 ==1]</span><br><span class="line">[(0, 1), (0, 3), (2, 1), (2, 3), (4, 1), (4, 3)]</span><br></pre></td></tr></table></figure>
 <p>It is worth mentioning that list resolution allows us to perform matrix operations in Python more easily. A basic method to operate matrix is to use nested list:</p>
-<p><code>`</code> bash</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>M = [[1,2,3],<br>         [4,5,6],<br>         [7,8,9]]<br>N = [[2,2,2],<br>         [3,3,3],<br>         [4,4,4]]<br>[row[1] for row in M]<br>[2, 5, 8]<br>[M[i][i] for i in range(len(M))]<br>[1, 5, 9]<br>[M[row][col] <em> N[row][col] for row in range(3) for col in range(3)]<br>[2, 4, 6, 12, 15, 18, 28, 32, 36]<br>[[M[row][col] </em> N[row][col] for row in range(3) ]for col in range(3)]<br>[[2, 12, 28], [4, 15, 32], [6, 18, 36]]<br><code>`</code> bash</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; M = [[1,2,3],</span><br><span class="line">     	[4,5,6],</span><br><span class="line">     	[7,8,9]]</span><br><span class="line">&gt;&gt;&gt; N = [[2,2,2],</span><br><span class="line">     	[3,3,3],</span><br><span class="line">     	[4,4,4]]</span><br><span class="line">&gt;&gt;&gt; [row[1] <span class="keyword">for</span> row <span class="keyword">in</span> M]</span><br><span class="line">[2, 5, 8]</span><br><span class="line">&gt;&gt;&gt; [M[i][i] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(M))]</span><br><span class="line">[1, 5, 9]</span><br><span class="line">&gt;&gt;&gt; [M[row][col] * N[row][col] <span class="keyword">for</span> row <span class="keyword">in</span> range(3) <span class="keyword">for</span> col <span class="keyword">in</span> range(3)]</span><br><span class="line">[2, 4, 6, 12, 15, 18, 28, 32, 36]</span><br><span class="line">&gt;&gt;&gt; [[M[row][col] * N[row][col] <span class="keyword">for</span> row <span class="keyword">in</span> range(3) ]<span class="keyword">for</span> col <span class="keyword">in</span> range(3)]</span><br><span class="line">[[2, 12, 28], [4, 15, 32], [6, 18, 36]]</span><br></pre></td></tr></table></figure>
 <p>Attention to the difference here resulted from consequence of inner and outer loop</p>
 
   </div>
@@ -351,7 +206,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Iterator-and-list-resolution-in-Python-Part-A"><span class="toc-number">1.</span> <span class="toc-text">Iterator and list resolution in Python (Part A)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction-to-Iterator"><span class="toc-number">1.1.</span> <span class="toc-text">Introduction to Iterator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction-to-list-resolution"><span class="toc-number">1.2.</span> <span class="toc-text">Introduction to list resolution</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction-to-Iterator"><span class="toc-number">1.</span> <span class="toc-text">Introduction to Iterator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction-to-list-resolution"><span class="toc-number">2.</span> <span class="toc-text">Introduction to list resolution</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
