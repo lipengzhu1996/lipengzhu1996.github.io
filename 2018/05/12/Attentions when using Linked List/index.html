@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="The Street Where Wind Settles">
 <meta property="og:description" content="Here I want to list the mistakes I made when using linked list Empty linked listSometimes an empty list is given to check if the program takes into account the special circumstances of the input. Take">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-05-13T10:01:21.622Z">
+<meta property="og:updated_time" content="2018-05-15T03:55:47.954Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Attentions when using Linked List">
 <meta name="twitter:description" content="Here I want to list the mistakes I made when using linked list Empty linked listSometimes an empty list is given to check if the program takes into account the special circumstances of the input. Take">
@@ -145,8 +145,10 @@
     <p>Here I want to list the mistakes I made when using linked list</p>
 <h2 id="Empty-linked-list"><a href="#Empty-linked-list" class="headerlink" title="Empty linked list"></a>Empty linked list</h2><p>Sometimes an empty list is given to check if the program takes into account the special circumstances of the input. Take care especially when we use ‘head.next’ at the very beginning. We can use the following code to filter those naughty input:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> head is None or head.next is None:</span><br><span class="line">	<span class="built_in">return</span> head</span><br></pre></td></tr></table></figure>
+<p>15/15/2018 Wrong Again!</p>
 <h2 id="Process-of-boundary-nodes"><a href="#Process-of-boundary-nodes" class="headerlink" title="Process of boundary nodes"></a>Process of boundary nodes</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">prevnode = head</span><br><span class="line">p = head.next</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> p:</span><br><span class="line">	nextnode = p.next</span><br><span class="line">	p.next = prevnode</span><br><span class="line">	prevnode = p</span><br><span class="line">	p = nextnode</span><br><span class="line"></span><br><span class="line">newll = prevnode</span><br></pre></td></tr></table></figure>
 <p>a short and seemed effect code to reverse a given linked list strated with head, but when we want to count the length of ‘newll’ the program will never stop. Why? Because we forget to process the first node of the original linkedlist: head. head.next still exist and it points to second node in the original linkedlist so this is a infinite linked list where nodes switch back and forth between the first and second nodes.</p>
+<p>There is another kind of error-prone case: Sometime the head node may be removed from the linked list, using ‘head’ node to index a linked list in this case is error prone. <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/submissions/1" target="_blank" rel="noopener">Example</a></p>
 <h2 id="Linked-list-break"><a href="#Linked-list-break" class="headerlink" title="Linked list break"></a>Linked list break</h2><p>Whenever we want to change node.next, remember to record the ‘name’ of next node by assinging another variable, otherwise the linked list will break.</p>
 
   </div>
