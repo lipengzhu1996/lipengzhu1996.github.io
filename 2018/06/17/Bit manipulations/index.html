@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Goodboy Bobby">
 <meta property="og:description" content="Before saying anything else, let’s declare the legal stuff: I collected all these little helpful pieces of code on the internet. All links are listed in the Reference. In this passage, I want to colle">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-06-17T12:36:52.636Z">
+<meta property="og:updated_time" content="2018-06-17T13:00:01.983Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bit manipulations">
 <meta name="twitter:description" content="Before saying anything else, let’s declare the legal stuff: I collected all these little helpful pieces of code on the internet. All links are listed in the Reference. In this passage, I want to colle">
@@ -101,7 +101,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Bit-manipulation-basics"><span class="toc-number">1.</span> <span class="toc-text">1. Bit manipulation basics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Absolute-value-of-an-integer"><span class="toc-number">2.</span> <span class="toc-text">2.Absolute value of an integer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Is-power-of-two"><span class="toc-number">3.</span> <span class="toc-text">3.Is power of two</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number"></span> <span class="toc-text">Reference</span></a>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Bit-manipulation-basics"><span class="toc-number">1.</span> <span class="toc-text">1. Bit manipulation basics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Absolute-value-of-an-integer"><span class="toc-number">2.</span> <span class="toc-text">2.Absolute value of an integer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Is-power-of-two"><span class="toc-number">3.</span> <span class="toc-text">3.Is power of two</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Integers-Comparison"><span class="toc-number">4.</span> <span class="toc-text">4.Integers Comparison</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number"></span> <span class="toc-text">Reference</span></a>
     </div>
   </span>
 </div>
@@ -170,6 +170,10 @@
 <p><em>x         == 0…010…0<br>x-1       == 0…001…1<br>x &amp; (x-1) == 0…000…0</em></p>
 <p>If the number is neither zero nor a power of two, it will have ‘1’ in more than one place:</p>
 <p><em>x         == 0…1…010…0<br>x-1       == 0…1…001…1<br>x &amp; (x-1) == 0…1…000…0</em></p>
+<h3 id="4-Integers-Comparison"><a href="#4-Integers-Comparison" class="headerlink" title="4.Integers Comparison"></a>4.Integers Comparison</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">comparison</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> diff = y-x;</span><br><span class="line">	<span class="keyword">int</span> bit31 = diff&gt;&gt;<span class="number">31</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> (bit31 &amp; (x ^ y)) ^ y</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>A universal helper operation sets bit31 (line 5) to either 0x00000000 or 0xFFFFFFFF. Then a special property of XOR is used: a XOR b XOR b = a, which means applying XOR twice with the same number eliminates this number.</p>
+<p>If bit31 is 0x00000000 (y &gt; x), line 6 becomes (0x00000000 AND (x XOR y)) XOR y, and since (zero AND something) = zero, only zero XOR y is left which returns y.</p>
+<p>if bit31 is 0xFFFFFFFF (y &lt; x), line 6 becomes (0xFFFFFFFF AND (x XOR y)) XOR y, and since (allBitsSet AND something) = something, (x XOR y) XOR y is left, which returns x as explained earlier.</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://bits.stephan-brumme.com/" target="_blank" rel="noopener">[1]the bit twiddler</a><br><a href="https://en.wikipedia.org/wiki/Bit_manipulation" target="_blank" rel="noopener">[2]Bit manipulation</a></p>
 
   </div>
@@ -197,7 +201,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Bit-manipulation-basics"><span class="toc-number">1.</span> <span class="toc-text">1. Bit manipulation basics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Absolute-value-of-an-integer"><span class="toc-number">2.</span> <span class="toc-text">2.Absolute value of an integer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Is-power-of-two"><span class="toc-number">3.</span> <span class="toc-text">3.Is power of two</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number"></span> <span class="toc-text">Reference</span></a>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Bit-manipulation-basics"><span class="toc-number">1.</span> <span class="toc-text">1. Bit manipulation basics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Absolute-value-of-an-integer"><span class="toc-number">2.</span> <span class="toc-text">2.Absolute value of an integer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Is-power-of-two"><span class="toc-number">3.</span> <span class="toc-text">3.Is power of two</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Integers-Comparison"><span class="toc-number">4.</span> <span class="toc-text">4.Integers Comparison</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number"></span> <span class="toc-text">Reference</span></a>
     </div>
 
     <div id="share-footer" style="display: none">
