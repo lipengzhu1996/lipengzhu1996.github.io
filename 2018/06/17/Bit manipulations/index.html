@@ -7,14 +7,14 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="Before saying anything else, let’s declare the legal stuff: I collected all these little helpful pieces of code on the internet. All links are listed in the Reference. In this passage, I want to colle">
-<meta name="keywords" content="C,Algorithms">
+<meta name="keywords" content="Algorithms,C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bit manipulations">
 <meta property="og:url" content="http://yoursite.com/2018/06/17/Bit manipulations/index.html">
 <meta property="og:site_name" content="Goodboy Bobby">
 <meta property="og:description" content="Before saying anything else, let’s declare the legal stuff: I collected all these little helpful pieces of code on the internet. All links are listed in the Reference. In this passage, I want to colle">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-06-17T13:00:01.983Z">
+<meta property="og:updated_time" content="2018-06-17T13:40:28.289Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bit manipulations">
 <meta name="twitter:description" content="Before saying anything else, let’s declare the legal stuff: I collected all these little helpful pieces of code on the internet. All links are listed in the Reference. In this passage, I want to colle">
@@ -101,7 +101,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Bit-manipulation-basics"><span class="toc-number">1.</span> <span class="toc-text">1. Bit manipulation basics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Absolute-value-of-an-integer"><span class="toc-number">2.</span> <span class="toc-text">2.Absolute value of an integer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Is-power-of-two"><span class="toc-number">3.</span> <span class="toc-text">3.Is power of two</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Integers-Comparison"><span class="toc-number">4.</span> <span class="toc-text">4.Integers Comparison</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number"></span> <span class="toc-text">Reference</span></a>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Bit-manipulation-basics"><span class="toc-number">1.</span> <span class="toc-text">1. Bit manipulation basics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Absolute-value-of-an-integer"><span class="toc-number">2.</span> <span class="toc-text">2.Absolute value of an integer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Is-power-of-two"><span class="toc-number">3.</span> <span class="toc-text">3.Is power of two</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Integers-Comparison"><span class="toc-number">4.</span> <span class="toc-text">4.Integers Comparison</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Swap-two-values"><span class="toc-number">5.</span> <span class="toc-text">5.Swap two values</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Sum-two-values"><span class="toc-number">6.</span> <span class="toc-text">6.Sum two values</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number"></span> <span class="toc-text">Reference</span></a>
     </div>
   </span>
 </div>
@@ -174,6 +174,31 @@
 <p>A universal helper operation sets bit31 (line 5) to either 0x00000000 or 0xFFFFFFFF. Then a special property of XOR is used: a XOR b XOR b = a, which means applying XOR twice with the same number eliminates this number.</p>
 <p>If bit31 is 0x00000000 (y &gt; x), line 6 becomes (0x00000000 AND (x XOR y)) XOR y, and since (zero AND something) = zero, only zero XOR y is left which returns y.</p>
 <p>if bit31 is 0xFFFFFFFF (y &lt; x), line 6 becomes (0xFFFFFFFF AND (x XOR y)) XOR y, and since (allBitsSet AND something) = something, (x XOR y) XOR y is left, which returns x as explained earlier.</p>
+<h3 id="5-Swap-two-values"><a href="#5-Swap-two-values" class="headerlink" title="5.Swap two values"></a>5.Swap two values</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swapXor</span><span class="params">(<span class="keyword">int</span>&amp; a, <span class="keyword">int</span>&amp; b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	a ^= b;</span><br><span class="line">	b ^= a;</span><br><span class="line">	a ^= b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Line 3, line 4 and line 5 produce the following equations:</p>
+<p>line 3: anew = a XOR b<br>line 4: bswapped = b XOR anew = b XOR (a XOR b) = a<br>line 5: aswapped = anew XOR bswapped = (a XOR b) XOR a = b</p>
+<p>In the end, aswapped = b and bswapped = a.</p>
+<p>However, there are two restrictions: integers only and it must not be used with same variable twice, e.g., swapXor(a,a)</p>
+<h3 id="6-Sum-two-values"><a href="#6-Sum-two-values" class="headerlink" title="6.Sum two values"></a>6.Sum two values</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getSum</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (a==<span class="number">0</span>)	<span class="keyword">return</span> b;</span><br><span class="line">	<span class="keyword">if</span> (b==<span class="number">0</span>)	<span class="keyword">return</span> a;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> getSum(a^b, (a&amp;b)&lt;&lt;<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Let’s consider a simple sum operation: 5+17=22.</p>
+<p>We can compute in three steps in the decimal addition:</p>
+<ul>
+<li>1 Ignore carry, only sum up the corresponding digits, get 12(5+7=12, ignore carry);</li>
+<li>2 Record the carry, in the previous step calculation, there is only 1 carry and the carry value is 10;</li>
+<li>3 Add the carry value to the first step result according to the method in step 1 to get the final result 22. The computation stops because there is no carry in this step(carry=0).</li>
+</ul>
+<p>Consider the case of binary numbers below (5=101, 17=10001):</p>
+<ul>
+<li>1 Ignore carry, add the corresponding digits, get 10100;</li>
+<li>2 Record the carry. In this example, only the last bit is added and the carry 1 is generated. The carry value is 10 (binary);</li>
+<li>3 Add the carry value to the result of step 1 in the same way as in step 1 to get the final result 10110, which is exactly the binary representation of the decimal number 22.</li>
+</ul>
+<p>Next, replace the above-mentioned binary addition 3-step calculation method with bit manupulations:</p>
+<ul>
+<li>1 Ignore Carry, 0+0=0, 0+1=1, 1+0=0, 1+1=0, typical XOR operation: a^b;</li>
+<li>2 Obviously, only 1+1 will result in a carry value of 10 relative to this digit, and 10=(1&amp;1)&lt;&lt;1, which means (a&amp;b)&lt;&lt;1;</li>
+<li>3 Add the results from Step 1 and 2 and repeat these two steps until no further carry.</li>
+</ul>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://bits.stephan-brumme.com/" target="_blank" rel="noopener">[1]the bit twiddler</a><br><a href="https://en.wikipedia.org/wiki/Bit_manipulation" target="_blank" rel="noopener">[2]Bit manipulation</a></p>
 
   </div>
@@ -201,7 +226,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Bit-manipulation-basics"><span class="toc-number">1.</span> <span class="toc-text">1. Bit manipulation basics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Absolute-value-of-an-integer"><span class="toc-number">2.</span> <span class="toc-text">2.Absolute value of an integer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Is-power-of-two"><span class="toc-number">3.</span> <span class="toc-text">3.Is power of two</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Integers-Comparison"><span class="toc-number">4.</span> <span class="toc-text">4.Integers Comparison</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number"></span> <span class="toc-text">Reference</span></a>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Bit-manipulation-basics"><span class="toc-number">1.</span> <span class="toc-text">1. Bit manipulation basics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Absolute-value-of-an-integer"><span class="toc-number">2.</span> <span class="toc-text">2.Absolute value of an integer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Is-power-of-two"><span class="toc-number">3.</span> <span class="toc-text">3.Is power of two</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Integers-Comparison"><span class="toc-number">4.</span> <span class="toc-text">4.Integers Comparison</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Swap-two-values"><span class="toc-number">5.</span> <span class="toc-text">5.Swap two values</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Sum-two-values"><span class="toc-number">6.</span> <span class="toc-text">6.Sum two values</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number"></span> <span class="toc-text">Reference</span></a>
     </div>
 
     <div id="share-footer" style="display: none">
