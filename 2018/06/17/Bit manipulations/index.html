@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Goodboy Bobby">
 <meta property="og:description" content="Before saying anything else, let’s declare the legal stuff: I collected all these little helpful pieces of code on the internet. All links are listed in the Reference. In this passage, I want to colle">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-06-17T08:00:09.402Z">
+<meta property="og:updated_time" content="2018-06-17T12:36:52.636Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bit manipulations">
 <meta name="twitter:description" content="Before saying anything else, let’s declare the legal stuff: I collected all these little helpful pieces of code on the internet. All links are listed in the Reference. In this passage, I want to colle">
@@ -101,7 +101,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Bit-manipulation-basics"><span class="toc-number">1.</span> <span class="toc-text">1. Bit manipulation basics</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Bit-manipulation-basics"><span class="toc-number">1.</span> <span class="toc-text">1. Bit manipulation basics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Absolute-value-of-an-integer"><span class="toc-number">2.</span> <span class="toc-text">2.Absolute value of an integer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Is-power-of-two"><span class="toc-number">3.</span> <span class="toc-text">3.Is power of two</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number"></span> <span class="toc-text">Reference</span></a>
     </div>
   </span>
 </div>
@@ -142,17 +142,35 @@
   <div class="content" itemprop="articleBody">
     <p>Before saying anything else, let’s declare the legal stuff: I collected all these little helpful pieces of code on the internet. All links are listed in the Reference.</p>
 <p>In this passage, I want to collect some commonly used bit manupulations.</p>
-<h3 id="1-Bit-manipulation-basics"><a href="#1-Bit-manipulation-basics" class="headerlink" title="1. Bit manipulation basics"></a>1. Bit manipulation basics</h3><p>Here are the basics of boolean algebra:<br>*<br>0 OR 0 → 0<br>0 OR 1 → 1<br>1 OR 0 → 1<br>1 OR 1 → 1</p>
-<p>0 AND 0 → 0<br>0 AND 1 → 0<br>1 AND 0 → 0<br>1 AND 1 → 1</p>
-<p>0 XOR 0 → 0<br>0 XOR 1 → 1<br>1 XOR 0 → 1<br>1 XOR 1 → 0<br>*<br>Whenever a bit needs to be set independent of its former state (setBit), OR comes in handy:</p>
-<p>input OR 1 → 1<br>input OR 0 → input</p>
+<h3 id="1-Bit-manipulation-basics"><a href="#1-Bit-manipulation-basics" class="headerlink" title="1. Bit manipulation basics"></a>1. Bit manipulation basics</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">setBit</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">unsigned</span> <span class="keyword">char</span> position)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> mask = <span class="number">1</span> &lt;&lt; position;</span><br><span class="line">	<span class="keyword">return</span> x | mask;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">clearBit</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">unsigned</span> <span class="keyword">char</span> position)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> mask = <span class="number">1</span> &lt;&lt; position;</span><br><span class="line">	<span class="keyword">return</span> x &amp; ~mask;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">modifyBit</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">unsigned</span> <span class="keyword">char</span> position, <span class="keyword">bool</span> newState)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> mask = <span class="number">1</span> &lt;&lt; position;</span><br><span class="line">	<span class="keyword">int</span> state = <span class="keyword">int</span>(newState); <span class="comment">// relies on true = 1 and false = 0</span></span><br><span class="line">	<span class="keyword">return</span> (x &amp; ~mask) | (-state &amp; mask);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">flipBit</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">unsigned</span> <span class="keyword">char</span> position)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> mask = <span class="number">1</span> &lt;&lt; position;</span><br><span class="line">	<span class="keyword">return</span> x ^ mask;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isBitSet</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">unsigned</span> <span class="keyword">char</span> position)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	x &gt;&gt;= position;</span><br><span class="line">	<span class="keyword">return</span> (x &amp; <span class="number">1</span>) != <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Here are the basics of boolean algebra:</p>
+<p><em>0 OR 0 → 0<br>0 OR 1 → 1<br>1 OR 0 → 1<br>1 OR 1 → 1</em></p>
+<p><em>0 AND 0 → 0<br>0 AND 1 → 0<br>1 AND 0 → 0<br>1 AND 1 → 1</em></p>
+<p><em>0 XOR 0 → 0<br>0 XOR 1 → 1<br>1 XOR 0 → 1<br>1 XOR 1 → 0</em></p>
+<p>Whenever a bit needs to be set independent of its former state (setBit), OR comes in handy:</p>
+<p><em>input OR 1 → 1<br>input OR 0 → input</em></p>
 <p>That means, a mask which is 1 for all bits to be set and 0 for all other bits fulfills our purposes (line 3, line 4).</p>
 <p>For clearing a bit (clearBit), AND has to be chosen because:</p>
-<p>input AND 0 → 0<br>input AND 1 → input</p>
+<p><em>input AND 0 → 0<br>input AND 1 → input</em></p>
 <p>This time, the mask must be 0 for all cleared bits and 1 for bits keeping their former state.<br>Line 10 uses the bit-wise negation to flip all bits of the mask accordingly.</p>
 <p>Flipping a bit (flipBit) is the domain of XOR:</p>
-<p>input XOR 1 → opposite of input<br>input XOR 0 → input</p>
-<p>That code looks almost identical to OR.</p>
+<p><em>input XOR 1 → opposite of input<br>input XOR 0 → input</em></p>
+<p>That code looks almost identical to OR. Last but not least, querying a single bit (isBitSet) can be implemented very similiar to clearing a single bit: create a mask, negate it, check for 0. </p>
+<p>To understand the manipulation of modifying a bit (modifyBit), we need to understand the principle of Machine code (true code, complement and ones-complement code). There is a good passage about it: <a href="https://www.jianshu.com/p/ffc97c4d2306" target="_blank" rel="noopener">深入理解机器码（原码，反码，补码）和算术溢出</a></p>
+<h3 id="2-Absolute-value-of-an-integer"><a href="#2-Absolute-value-of-an-integer" class="headerlink" title="2.Absolute value of an integer"></a>2.Absolute value of an integer</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">myAbs</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">int</span> bit31 = x &gt;&gt; <span class="number">31</span>;</span><br><span class="line">	<span class="keyword">return</span> (x ^ bit31) - bit31;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>All major processors represent negative numbers using the two’s-complement which is defined as:</p>
+<p><em>for x ≥ 0 → x<br>for x &lt; 0 → NOT(x) + 1</em></p>
+<p>On the lowest level, computers provide logical bit shifts and arithmetic bit shifts. Both shifts differ in handling how to fill the empty bits on the left side. Logical shifts insert zeros while arithmetic shifts replicate the formerly highest bit.</p>
+<p>Whereas signed integers are arithmetically shifted in C, unsigned integers are logically shifted.</p>
+<p>In our case x is shifted arithmetically 31 times to the right which basically erases its value and spreads the highest bit. That means, line 3 evaluates either to 0x00000000 (→ 0) or 0xFFFFFFFF (→ −1).<br>Note: 32 bit systems require a shift by 31, 64 bit systems require a shift by 63 accordingly.</p>
+<p>Consequently, line 4 turns out to be (x XOR 0) − 0 for positive values of x (including x=0). x XOR 0 is still x and x − 0 remains x, too. So for positive x we get x ≥ 0 → x.</p>
+<p>We saw that for negative values of x, bit31 is set to 0xFFFFFFFF. Line 4 is then (x XOR 0xFFFFFFFF) − 0xFFFFFFFF. The bracketed XOR is equivalent to NOT(x) and the constant −0xFFFFFFFF turns out to be −(-1) = +1. In the end, the whole term is NOT(x) + 1, exactly what we wanted: for x &lt; 0 → NOT(x) + 1</p>
+<h3 id="3-Is-power-of-two"><a href="#3-Is-power-of-two" class="headerlink" title="3.Is power of two"></a>3.Is power of two</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isPowerOfTwo</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> ((x &amp; (x<span class="number">-1</span>)) == <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>It uses the fact that powers of two have one and only one bit set in their binary representation:</p>
+<p><em>x         == 0…010…0<br>x-1       == 0…001…1<br>x &amp; (x-1) == 0…000…0</em></p>
+<p>If the number is neither zero nor a power of two, it will have ‘1’ in more than one place:</p>
+<p><em>x         == 0…1…010…0<br>x-1       == 0…1…001…1<br>x &amp; (x-1) == 0…1…000…0</em></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://bits.stephan-brumme.com/" target="_blank" rel="noopener">[1]the bit twiddler</a><br><a href="https://en.wikipedia.org/wiki/Bit_manipulation" target="_blank" rel="noopener">[2]Bit manipulation</a></p>
 
   </div>
 </article>
@@ -179,7 +197,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Bit-manipulation-basics"><span class="toc-number">1.</span> <span class="toc-text">1. Bit manipulation basics</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Bit-manipulation-basics"><span class="toc-number">1.</span> <span class="toc-text">1. Bit manipulation basics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Absolute-value-of-an-integer"><span class="toc-number">2.</span> <span class="toc-text">2.Absolute value of an integer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Is-power-of-two"><span class="toc-number">3.</span> <span class="toc-text">3.Is power of two</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number"></span> <span class="toc-text">Reference</span></a>
     </div>
 
     <div id="share-footer" style="display: none">
