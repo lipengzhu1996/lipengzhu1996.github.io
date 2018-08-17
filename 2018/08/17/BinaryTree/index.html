@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="BinaryTree defination, initialization, traversals(preorder, inorder and postorder &amp;amp;&amp;amp; recursive and not). 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748">
+<meta name="keywords" content="Java,Data Structure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BinaryTree">
+<meta property="og:url" content="http://yoursite.com/2018/08/17/BinaryTree/index.html">
+<meta property="og:site_name" content="Goodboy Bobby">
+<meta property="og:description" content="BinaryTree defination, initialization, traversals(preorder, inorder and postorder &amp;amp;&amp;amp; recursive and not). 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-08-17T15:16:04.222Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BinaryTree">
+<meta name="twitter:description" content="BinaryTree defination, initialization, traversals(preorder, inorder and postorder &amp;amp;&amp;amp; recursive and not). 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>BinaryTree</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2018/08/12/Common Ways to Optimize Program/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/08/17/BinaryTree/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/08/17/BinaryTree/&text=BinaryTree"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/08/17/BinaryTree/&title=BinaryTree"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/08/17/BinaryTree/&is_video=false&description=BinaryTree"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=BinaryTree&body=Check out this article: http://yoursite.com/2018/08/17/BinaryTree/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/08/17/BinaryTree/&title=BinaryTree"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/08/17/BinaryTree/&title=BinaryTree"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/08/17/BinaryTree/&title=BinaryTree"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/08/17/BinaryTree/&title=BinaryTree"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/08/17/BinaryTree/&name=BinaryTree&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        BinaryTree
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Goodboy Bobby</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-08-17T13:05:37.000Z" itemprop="datePublished">2018-08-17</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Data-Structure/">Data Structure</a>, <a class="tag-link" href="/tags/Java/">Java</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>BinaryTree defination, initialization, traversals(preorder, inorder and postorder &amp;&amp; recursive and not).</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">		<span class="comment">//defination</span></span><br><span class="line">		T data;</span><br><span class="line">		TreeNode&lt;T&gt; left=<span class="keyword">null</span>;</span><br><span class="line">		TreeNode&lt;T&gt; right=<span class="keyword">null</span>;</span><br><span class="line">    	</span><br><span class="line">		<span class="comment">//constructors</span></span><br><span class="line">    	<span class="function"><span class="keyword">public</span> <span class="title">TreeNode</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    	<span class="function"><span class="keyword">public</span> <span class="title">TreeNode</span><span class="params">(T data)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">this</span>.data</span>=data;</span><br><span class="line"> 		</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">TreeNode</span><span class="params">(T data, TreeNode left, TreeNode right)</span> </span>&#123;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">this</span>.data = data;</span><br><span class="line">			<span class="keyword">this</span>.left = left;</span><br><span class="line">			<span class="keyword">this</span>.right = right;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">BinaryTree</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">	</span><br><span class="line">		<span class="keyword">private</span> TreeNode&lt;T&gt; root;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/*****constructors*****/</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">BinaryTree</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">BinaryTree</span><span class="params">(TreeNode&lt;T&gt; root)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">this</span>.root </span>= root;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">BinaryTree</span><span class="params">(<span class="keyword">int</span> element[], <span class="keyword">int</span> size)</span></span>&#123;	<span class="comment">//initialization with a given array</span></span><br><span class="line">		</span><br><span class="line">			TreeNode[] nodes = <span class="keyword">new</span> TreeNode[size];</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)&#123;</span><br><span class="line">				<span class="keyword">if</span>(element[i] &lt; <span class="number">0</span>)</span><br><span class="line">					nodes[i] = <span class="keyword">null</span>;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					nodes[i] = <span class="keyword">new</span> TreeNode(element[i]);	</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			LinkedList&lt;TreeNode&gt; nodeQueue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">			TreeNode node;</span><br><span class="line">			<span class="keyword">int</span> index = <span class="number">1</span>;</span><br><span class="line">			</span><br><span class="line">			nodeQueue.add(nodes[<span class="number">0</span>]);</span><br><span class="line">			<span class="keyword">while</span>(index &lt; size)&#123;</span><br><span class="line">				</span><br><span class="line">				node = nodeQueue.remove();</span><br><span class="line">				nodeQueue.add(nodes[index++]);</span><br><span class="line">				node.left = nodeQueue.getLast();			</span><br><span class="line">				nodeQueue.add(nodes[index++]);	</span><br><span class="line">				node.right = nodeQueue.getLast();</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">this</span>.root = nodes[<span class="number">0</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/*****traversals*****/</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//recursive preorder</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preOrder</span><span class="params">(TreeNode&lt;T&gt; root)</span></span>&#123;	</span><br><span class="line">			<span class="keyword">if</span>(root!=<span class="keyword">null</span>)&#123;</span><br><span class="line">				visit(root);</span><br><span class="line">				preOrder(root.left);</span><br><span class="line">				preOrder(root.right);</span><br><span class="line">			&#125;   		    		  </span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//non-recursive preorder</span></span><br><span class="line">		<span class="comment">/*	1.visit node P and push P into stack.</span></span><br><span class="line"><span class="comment">			2.judge whether P.left is null. If null, pop the stack and set P.right as current P and jump to 1.</span></span><br><span class="line"><span class="comment">			  set P.left as current if not.</span></span><br><span class="line"><span class="comment">			3.Traversal stops when P is null and stack is empty.*/</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nonRecursivePreOrder</span><span class="params">(TreeNode&lt;T&gt; root)</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">			Stack&lt;TreeNode&lt;T&gt;&gt; s=<span class="keyword">new</span> Stack&lt;TreeNode&lt;T&gt;&gt;();</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span>(root!=<span class="keyword">null</span>)&#123; </span><br><span class="line">				s.push(root);	<span class="comment">//push root node into stack</span></span><br><span class="line">				<span class="keyword">while</span>(!s.isEmpty())&#123;	<span class="comment">//while stack is not empty</span></span><br><span class="line">					TreeNode&lt;T&gt; node=s.pop();	<span class="comment">//pop</span></span><br><span class="line">					visit(node);</span><br><span class="line">					<span class="keyword">if</span>(node.right!=<span class="keyword">null</span>) s.push(node.right);<span class="comment">//push right node into stack</span></span><br><span class="line">					<span class="keyword">if</span>(node.left!=<span class="keyword">null</span>)  s.push(node.left); <span class="comment">//push left node into stack</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//recursive inorder</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inOrder</span><span class="params">(TreeNode&lt;T&gt; root)</span></span>&#123;	</span><br><span class="line">			<span class="keyword">if</span>(root!=<span class="keyword">null</span>)&#123;</span><br><span class="line">				inOrder(root.left);</span><br><span class="line">				visit(root);</span><br><span class="line">				inOrder(root.right);</span><br><span class="line">			&#125;   		    		  </span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//non-recursive inorder</span></span><br><span class="line">		<span class="comment">/*	1.Push the current node to S and set current = current-&gt;left until current is NULL</span></span><br><span class="line"><span class="comment">			2.If current is NULL and stack is not empty then </span></span><br><span class="line"><span class="comment">				a) Pop the top item from stack.</span></span><br><span class="line"><span class="comment">				b) Print the popped item, set current = popped_item-&gt;right </span></span><br><span class="line"><span class="comment">				c) Go to step 1.</span></span><br><span class="line"><span class="comment">			3.If current is NULL and stack is empty then we are done.*/</span>		</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nonRecursiveInOrder</span><span class="params">(TreeNode&lt;T&gt; root)</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">			Stack&lt;TreeNode&lt;T&gt;&gt; stack=<span class="keyword">new</span> Stack&lt;TreeNode&lt;T&gt;&gt;();</span><br><span class="line">			TreeNode&lt;T&gt; node=root;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">while</span>(node!=<span class="keyword">null</span>||!stack.isEmpty())&#123;</span><br><span class="line">			</span><br><span class="line">				<span class="comment">//keep pushing right child into stack</span></span><br><span class="line">				<span class="keyword">while</span>(node!=<span class="keyword">null</span>)&#123;	<span class="comment">//until finding the node with null left child</span></span><br><span class="line">					stack.push(node);</span><br><span class="line">					node=node.left;</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				node=stack.pop();</span><br><span class="line">				visit(node);</span><br><span class="line">				node=node.right;<span class="comment">//</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//recursive postorder</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postOrder</span><span class="params">(TreeNode&lt;T&gt; root)</span></span>&#123;	</span><br><span class="line">			<span class="keyword">if</span>(root!=<span class="keyword">null</span>)&#123;</span><br><span class="line">				postOrder(root.left);</span><br><span class="line">				postOrder(root.right);</span><br><span class="line">				visit(root);</span><br><span class="line">			&#125;   		    		  </span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//non-recursive postorder	</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nonRecursivePostOrder</span><span class="params">(TreeNode&lt;T&gt; root)</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">			TreeNode&lt;T&gt; node=root;</span><br><span class="line">			TreeNode&lt;T&gt; preNode=<span class="keyword">null</span>;<span class="comment">//record of right nodes that have been traversd</span></span><br><span class="line">			</span><br><span class="line">			Stack&lt;TreeNode&lt;T&gt;&gt; stack=<span class="keyword">new</span> Stack&lt;TreeNode&lt;T&gt;&gt;();</span><br><span class="line">			<span class="keyword">while</span>(node!=<span class="keyword">null</span>||!stack.isEmpty())&#123;</span><br><span class="line">				</span><br><span class="line">				<span class="keyword">while</span>(node!=<span class="keyword">null</span>)&#123;</span><br><span class="line">					stack.push(node);</span><br><span class="line">					node=node.left;       			  </span><br><span class="line">				&#125;</span><br><span class="line">				node=stack.peek();<span class="comment">//get but not pop the peak node</span></span><br><span class="line"></span><br><span class="line">				<span class="keyword">if</span>(node.right==<span class="keyword">null</span>||node.right==preNode)&#123;</span><br><span class="line">					visit(node);</span><br><span class="line">					node=stack.pop();</span><br><span class="line">					preNode = node;</span><br><span class="line">					node=<span class="keyword">null</span>;      			  </span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					node=node.right;				</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//level traverse</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">levelTraverse</span><span class="params">(TreeNode&lt;T&gt; root)</span></span>&#123;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//Queue is an interface and cannot be instanced, usually we use LinkedList as queue.</span></span><br><span class="line">			Queue&lt;TreeNode&lt;T&gt;&gt; queue=<span class="keyword">new</span> LinkedList&lt;TreeNode&lt;T&gt;&gt;();</span><br><span class="line">			TreeNode&lt;T&gt; node=root;</span><br><span class="line">			queue.offer(node);<span class="comment">//push element into queue</span></span><br><span class="line"></span><br><span class="line">			<span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">				node=queue.poll();<span class="comment">//pop out node</span></span><br><span class="line">				<span class="keyword">if</span>(node!=<span class="keyword">null</span>)&#123;</span><br><span class="line">					visit(node);</span><br><span class="line">					<span class="comment">//push node.left and node.right into queue</span></span><br><span class="line">					queue.offer(node.left);</span><br><span class="line">					queue.offer(node.right);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;        	         	         	  </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/08/17/BinaryTree/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/08/17/BinaryTree/&text=BinaryTree"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/08/17/BinaryTree/&title=BinaryTree"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/08/17/BinaryTree/&is_video=false&description=BinaryTree"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=BinaryTree&body=Check out this article: http://yoursite.com/2018/08/17/BinaryTree/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/08/17/BinaryTree/&title=BinaryTree"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/08/17/BinaryTree/&title=BinaryTree"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/08/17/BinaryTree/&title=BinaryTree"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/08/17/BinaryTree/&title=BinaryTree"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/08/17/BinaryTree/&name=BinaryTree&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 Lipeng Zhu
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
